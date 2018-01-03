@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人资料</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--<link rel="stylesheet" href="css/iconfont.css" />-->
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_526177_y4eo94umw2iysyvi.css" />
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css">
+		<style>
+			.font16{
+				font-size: 16px!important;
+				color:#fff;
+				
+			}
+			body,.mui-content,.mui-input-group{
+				background: #efeff4;
+			}
+			.mui-table-view:after {
+			    height: 1px;
+			}
+			.mui-table-view-cell:after{
+				height:1px;
+				left:0;
+			}
+			.mui-table-view-cell{
+				padding:3px 15px;
+			}
+			.mui-input-row label~input{
+				padding-right:30px;
+				width:64%;
+			}
+			#sex,#marriage{
+				width:20%;
+				border:none!important;
+				-webkit-appearance:menulist-button;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<header class="mui-bar mui-bar-nav bg-header">
+			<h1 class="mui-title font16">编辑个人资料</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left mui-back-white"></a>
+			<span class="mui-pull-right mui-icon font16" id="saveData" style="margin-top:5px;">保存</span>
+		</header>-->
+		<div class="mui-content">
+			<form action="" class="mui-input-group">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">用户名</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="1761107190">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">昵称</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="1761107190">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">电子邮件</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="38868@qq.com">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">地址</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="上海市">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view" style="margin-top:15px;">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">性别</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<select name="" id="sex">
+								<option value="女">女</option>
+								<option value="男">男</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">出生日期</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input type="date" name="" id="" value="" class="mui-input mui-text-right" style="padding-right:0;"/>
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view" style="margin-top:15px;">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">兴趣爱好</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="IT">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">教育程度</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="本科">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">职业</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="IT">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">婚姻状况</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<select name="" id="marriage">
+								<option value="已婚">已婚</option>
+								<option value="未婚">未婚</option>
+							</select>
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row">
+							<label for="account" class="">年收入情况</label>
+							<img src="img/line.jpg" style="margin-top:10px;"/>
+							<input id='account' type="text" class="mui-input-clear mui-input mui-text-right" placeholder="" value="100万">
+						</div>
+					</li>
+				</ul>
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			})
+			$("#saveData").click(function(){
+				alert("保存成功");
+				setTimeout(function(){
+					window.location.href="personInfo.html"
+				},2000)
+			})
+		</script>
+	</body>
+</html>

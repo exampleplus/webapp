@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>个人资料</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--<link rel="stylesheet" href="css/iconfont.css" />-->
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_526177_y4eo94umw2iysyvi.css" />
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css">
+		<style>
+		body{
+			font-size: 14px;
+			background: #efeff4;
+		}
+		.mui-content{
+			background: #efeff4;
+		}
+		.mui-input-group .mui-input-row:after{
+			height:1px;
+		}
+		.mui-table-view:after {
+		    height: 1px;
+		}
+		input{
+			text-align: right;
+		}
+		select{
+				/*height:35px;
+				padding:5px 15px;*/
+				border:none!important;
+				-webkit-appearance:menulist-button;
+			}
+			.mui-icon{
+				color:#fff;
+			}
+			.mui-table-view-chevron .mui-table-view-cell {
+			    padding-right: 40px;
+			}
+			.font16{
+				font-size: 14px!important;
+			}
+			.sex{
+				margin-top:15px;
+			}
+			.sex:before{
+				position: absolute;
+			    right: 0;
+			    top: 0;
+			    left: 15px;
+			    height: 1px;
+			    content: '';
+			    -webkit-transform: scaleY(.5);
+			    transform: scaleY(.5);
+			    background-color: #c8c7cc;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<header class="mui-bar mui-bar-nav bg-header">
+			<h1 class="mui-title">个人资料</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left mui-back-white"></a>
+			<span class="mui-pull-right mui-icon font16" id="editData" style="margin-top:5px;">编辑</span>
+		</header>-->
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">用户姓名</span>
+						<span class="mui-pull-right">陈朋超</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">昵称</span>
+						<span class="mui-pull-right">快当</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">电子邮件</span>
+						<span class="mui-pull-right">384868059@qq.com</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">手机号</span>
+						<span class="mui-pull-right">17612107190</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">地址</span>
+						<span class="mui-pull-right">上海市</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron" style="margin-top:15px;">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">性别</span>
+						<span class="mui-pull-right">男</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">出生日期</span>
+						<span class="mui-pull-right">1995-03-29</span>
+					</a>
+				</li>
+				
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron" style="margin-top:15px;">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">兴趣爱好</span>
+						<span class="mui-pull-right">收藏</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">教育程度</span>
+						<span class="mui-pull-right">本科</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">职业</span>
+						<span class="mui-pull-right">IT</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">婚姻状况</span>
+						<span class="mui-pull-right">未婚</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view mui-table-view-chevron" style="margin-bottom:15px;">
+				<li class="mui-table-view-cell">
+					<a href="" class="">
+						<span class="mui-pull-left">年收入情况</span>
+						<span class="mui-pull-right">100万</span>
+					</a>
+				</li>
+			</ul>
+			<!--<div class="mui-input-row">
+				<label for="">昵称</label>
+				<input type="text"  value="" data-input-clear="5"/>
+				<span class="mui-icon mui-icon-clear mui-hidden"></span>
+			</div>
+			<div class="mui-input-row">
+				<label for="">电子邮件</label>
+				<input type="text"  value="" data-input-clear="5"/>
+				<span class="mui-icon mui-icon-clear mui-hidden"></span>
+			</div>
+			<div class="mui-input-row">
+				<label for="">手机号</label>
+				<input type="text"  value="" data-input-clear="5"/>
+				<span class="mui-icon mui-icon-clear mui-hidden"></span>
+			</div>
+			<div class="mui-input-row">
+				<label for="">地址</label>
+				<input type="text"  value="" data-input-clear="5"/>
+				<span class="mui-icon mui-icon-clear mui-hidden"></span>
+			</div>
+			<div class="mui-input-row sex">
+				<label for="">性别</label>
+				<select name="" id="">
+					<option value="男">男</option>
+					<option value="女">女</option>
+				</select>
+			</div>-->
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			mui.init({
+				swipeBack:true //启用右滑关闭功能
+			});
+			$("#editData").click(function(){
+				window.location.href="editData.html"
+			})
+		</script>
+	</body>
+</html>
