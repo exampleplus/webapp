@@ -37,6 +37,12 @@
 			.mui-checkbox input[type="checkbox"]:checked:before{
 				color:#de1b1b
 			}
+			.popover{
+				position: absolute;
+				left:35%;
+				bottom:45%;
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
@@ -49,7 +55,7 @@
 			<div class="mui-content-padded">
 				<div class="mui-row" style="overflow: hidden;">
 					<span class="mui-pull-left mui-block lineH65">当物类型</span>
-					<ul class="mui-table-view mui-pull-right" style="overflow: hidden;" id="box">
+					<ul class="mui-table-view mui-pull-right" style="overflow: hidden;" id="grid">
 						<li class="mui-table-view-cell mui-pull-left mui-media-padd" id="add">
 							<span class="mui-block icon iconfont icon-zuanshi icon-zuanshi-gray mui-margin-bottom5"></span>
 							<span class="mui-block mui-margin-left3">民品</span>
@@ -84,7 +90,7 @@
 				</div>
 				<div class="mui-row">
 					<span class="mui-pull-left mui-padding-top10">用款日期</span>
-					<input type="date" class="mui-pull-right mui-input-clear mui-input-75"/>
+					<input type="date" class="mui-pull-right mui-input-clear mui-input-75" id="date"/>
 				</div>
 				<div class="mui-row">
 					<span class="mui-pull-left mui-padding-top10">当物名称</span>
@@ -131,6 +137,7 @@
 				<div class="mui-row">
 					<button type="button" class="mui-btn mui-btn-danger mui-btn-block" id="sendOnline">发送</button>
 				</div>
+				<p class="popover">发送请求中......</p>
 			</div>
 		</div>
 		<script src="js/mui.min.js"></script>
@@ -140,38 +147,47 @@
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
-			let $box=$("#box");
-			let $li=$box.find("li");
-			let $span=$li.find('span:first')
+			let $grid=$("#grid");
+			let $li=$grid.find("li");
+			let $span=$li.find('span:first');
+			var flag=0;
 			$span.each(function(index){
 				if(index==0){
 					$(this).click(function(){
 						$(this).addClass("mui-bg-minpin");
 						$(this).parent().siblings().find("span:first").removeClass('mui-bg-fangchan mui-bg-qiche mui-bg-qita');
+						flag=0;
 					})
 				}
 				if(index==1){
 					$(this).click(function(){
 						$(this).addClass("mui-bg-fangchan");
 						$(this).parent().siblings().find("span:first").removeClass('mui-bg-minpin mui-bg-qiche mui-bg-qita');
+						flag=1;
 					})
 				}
 				if(index==2){
 					$(this).click(function(){
 						$(this).addClass("mui-bg-qiche");
 						$(this).parent().siblings().find("span:first").removeClass('mui-bg-minpin mui-bg-fangchan mui-bg-qita');
+						flag=2;
 					})
 				}
 				if(index==3){
 					$(this).click(function(){
 						$(this).addClass("mui-bg-qita");
 						$(this).parent().siblings().find("span:first").removeClass('mui-bg-minpin mui-bg-fangchan mui-bg-qiche');
+						flag=3;
 					})
 				}
 			});
-			//发送请求
+//			发送请求
 			$("#sendOnline").click(function(){
-				window.location.href="saleOnline.html"
+//				console.log(flag)
+			$(".popover").show().delay(2000).fadeOut();
+			setTimeout(function(){
+					window.location.href="saleOnline.html"
+				},3000)
 			})
 			
 		</script>

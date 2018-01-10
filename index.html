@@ -9,7 +9,7 @@
 
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="css/mui.min.css">
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_526177_ayh4zcsxzrwtrzfr.css" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_526177_uv3ce2s1kmx6r.css" />
 		<!--App自定义的css-->
 		<link rel="stylesheet" href="css/app.css">
 		<style type="text/css">
@@ -131,34 +131,18 @@
 						<span class="mui-block icon iconfont icon-zuanshi"></span>
 						<span class="mui-block mui-margin-left3">民品</span>
 					</li>
-					<!--<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded" id="add">
-						<span class="icon iconfont icon-zuanshi"></span>
-						民品
-					</li>-->
 					<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded">
 						<span class="mui-block icon iconfont icon-fangchan"></span>
 						<span class="mui-block mui-margin-left3">房产</span>
 					</li>
-					<!--<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded" id="remove">
-						<span class="icon iconfont icon-fangchan"></span>
-						
-					</li>-->
 					<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded">
 						<span class="mui-block icon iconfont icon-qiche-copy"></span>
 						<span class="mui-block mui-margin-left3">汽车</span>
 					</li>
-					<!--<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded" id="move">
-						<span class="icon iconfont icon-qiche-copy"></span>
-						汽车
-					</li>-->
 					<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded">
 						<span class="mui-block icon iconfont icon-qita"></span>
 						<span class="mui-block mui-margin-left3">其他</span>
 					</li>
-					<!--<li class="mui-table-view-cell mui-pull-left mui-table-view-cell-padded" id="select">
-						<span class="icon iconfont icon-qita"></span>
-						其他
-					</li>-->
 				</ul>
 			</div>
 			
@@ -172,39 +156,38 @@
 	                    <div class="mui-media-body">我的业务</div>
 	            	</a>
 	            </li>
-	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-	            	<a href="#">
-	                    <span class="icon iconfont icon-diandangxing"></span>
-	                    <div class="mui-media-body">典当</div>
-	            	</a>
+	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"  id="gosale">
+		            	<a href="javascript:;">
+		                    <span class="icon iconfont icon-diandangxing"></span>
+		                    <div class="mui-media-body">我的典当</div>
+		            	</a>
 	            </li>
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 	            	<a href="#">
-	                    <span class="mui-icon mui-icon-paperclip"></span>
+	                    <span class="icon iconfont icon-diannao"></span>
 	                    <div class="mui-media-body">续当</div>
 	            	</a>
 	            </li>
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 	            	<a href="#">
-	                    <span class="mui-icon mui-icon-chatboxes"></span>
+	                    <span class="icon iconfont icon-shuhui"></span>
 	                    <div class="mui-media-body">赎回</div>
 	            	</a>
 	            </li>
 	            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 	            	<a href="#">
-	                    <span class="mui-icon mui-icon-search"></span>
+	                    <span class="icon iconfont icon-jianding"></span>
 	                    <div class="mui-media-body">鉴定评估</div>
 	           		 </a>
 	            </li>
 	             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 	            	<a href="#">
-	                    <span class="mui-icon mui-icon-map"></span>
+	                    <span class="icon iconfont icon-dangdi"></span>
 	                    <div class="mui-media-body">身边典当</div>
 	           		 </a>
 	            </li>
 	        </ul> 
 			</div>
-	        
 		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/jquery.min.js"></script>
@@ -216,52 +199,65 @@
 			slider.slider({
 				interval: 2000
 			});
-			//抵押物分类添加边框
-			let $box=$("#box");
-//			console.log(box.children("li").length)
-			$box.find('li').each(function(index){
-				if(index==0){
-					$(this).click(function(){
-						$(this).addClass("mui-border-minpin");
-						$(this).siblings().removeClass('mui-border-fangchan mui-border-qiche mui-border-qita');
-					})
-				}
-				if(index==1){
-					$(this).click(function(){
-						$(this).addClass("mui-border-fangchan");
-						$(this).siblings().removeClass('mui-border-minpin mui-border-qiche mui-border-qita');
-					})
-				}
-				if(index==2){
-					$(this).click(function(){
-						$(this).addClass("mui-border-qiche");
-						$(this).siblings().removeClass('mui-border-minpin mui-border-fangchan mui-border-qita');
-					})
-				}
-				if(index==3){
-					$(this).click(function(){
-						$(this).addClass("mui-border-qita");
-						$(this).siblings().removeClass('mui-border-minpin mui-border-fangchan mui-border-qiche');
-					})
-				}
-			});
-			//a链接不能跳转的问题
-			mui('body').on('tap','a',function(){
-			    window.top.location.href=this.href;
-			});
-			//点击我要典当进入在线典当界面
-			$("#sendRequest").click(function(){
-				window.location.href="sendReuest.html"
-			})
 		</script>
 		<script>
-			var mui_login=$(".mui-login");
-			var mui_icon_none=$(".mui-icon-none");
-			var account=sessionStorage.getItem("userAccount");
-			if(account){
-				mui_icon_none.show();
-				mui_login.hide();
-			}
+//			$.noConflict();
+			//a链接不能跳转的问题
+//			mui('body').on('tap','a',function(){
+//			    window.top.location.href=this.href;
+//			});
+			$(function(){
+				//抵押物分类添加边框
+				let $box=$("#box");
+				$box.find('li').each(function(index){
+					if(index==0){
+						$(this).click(function(){
+	//						$(this).addClass("mui-border-minpin");
+							$(this).css("border","1px solid yellow");
+	//						$(this).siblings().removeClass('mui-border-fangchan mui-border-qiche mui-border-qita');
+							$(this).siblings().css("border","1px solid #fff");
+						})
+					}
+					if(index==1){
+						$(this).click(function(){
+	//						$(this).addClass("mui-border-fangchan");
+							$(this).css("border","1px solid rgba(51, 255, 0, 0.89)");
+	//						$(this).siblings().removeClass('mui-border-minpin mui-border-qiche mui-border-qita');
+							$(this).siblings().css("border","1px solid #fff");
+						})
+					}
+					if(index==2){
+						$(this).click(function(){
+	//						$(this).addClass("mui-border-qiche");
+							$(this).css("border","1px solid blueviolet");
+	//						$(this).siblings().removeClass('mui-border-minpin mui-border-fangchan mui-border-qita');
+							$(this).siblings().css("border","1px solid #fff");
+						})
+					}
+					if(index==3){
+						$(this).click(function(){
+	//						$(this).addClass("mui-border-qita");
+							$(this).css("border","1px solid #FF0000");
+	//						$(this).siblings().removeClass('mui-border-minpin mui-border-fangchan mui-border-qiche');
+							$(this).siblings().css("border","1px solid #fff");
+						})
+					}
+				});
+				//点击我要典当进入在线典当界面
+				$("#sendRequest").click(function(){
+					window.location.href="sendReuest.html"
+				});
+				$("#gosale").click(function(){
+					window.location.href="sendReuest.html"
+				});
+				var mui_login=$(".mui-login");
+				var mui_icon_none=$(".mui-icon-none");
+				var account=sessionStorage.getItem("userAccount");
+				if(account){
+					mui_icon_none.show();
+					mui_login.hide();
+				}
+			})
 		</script>
 	</body>
 </html>

@@ -10,7 +10,7 @@
 		<!--标准mui.css-->
 		<link rel="stylesheet" href="css/mui.min.css">
 		<!--<link rel="stylesheet" href="css/iconfont.css" />-->
-		<link rel="stylesheet" href="//at.alicdn.com/t/font_526177_y4eo94umw2iysyvi.css" />
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_526177_hbenupwaf5jkmx6r.css" />
 		<!--App自定义的css-->
 		<link rel="stylesheet" href="css/app.css">
 		<style>
@@ -21,72 +21,86 @@
 			.mui-control-content .mui-loading {
 				margin-top: 50px;
 			}
+			html,#slider,.mui-content{
+				width:100%;
+				height:100%;
+				
+			}
+			body{
+				/*margin-top:45px;*/
+				width:100%;
+				height:calc(100% - 45px);
+			}
+			.mui-slider-group{
+				height:calc(100% - 45px);
+			}
+			.mui-table-view-cell:after{
+				
+				left:0;
+			}
+			.mui-text-muted{
+				color:#9c9393;
+			}
+			.mui-li-border:after{
+				height:1px;
+			}
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item{
+				border-top:none;
+			}
+			.icon-6,.icon-clock,.icon-qian{
+				font-size: 1em;
+				margin-right:10px;
+			}
+			.icon-qian{
+				color:red;
+			}
+			.color_red{
+				color:red
+			}
 		</style>
 	</head>
 	<body>
-		<!--<header class="mui-bar mui-bar-nav bg-header">
+		<header class="mui-bar mui-bar-nav bg-header">
 			<h1 class="mui-title">在线典当</h1>
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left mui-back-white"></a>
 			<a class="mui-icon mui-icon-plusempty mui-pull-right mui-back-white" id="addNewRequest"></a>
-		</header>-->
+		</header>
 		<div class="mui-content">
 			<div id="slider" class="mui-slider">
-				<!--<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<a class="mui-control-item" href="#item1mobile">
 						进行中
 					</a>
 					<a class="mui-control-item" href="#item2mobile">
 						历史申请
 					</a>
-				</div>-->
+				</div>
 				<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
 				<div class="mui-slider-group">
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 						<div id="scroll1" class="mui-scroll-wrapper">
-							<div class="mui-scroll" style="text-align: center;padding-top:30%;" >
-								申请成功
-								<!--<ul class="mui-table-view">
+							<div class="mui-scroll item1">
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell"><span class="mui-pull-left color_red goodsName"></span><span class="mui-pull-right color_red AmountMoney"></span></li>
+									<li class="mui-table-view-cell"><span class="mui-pull-left">提交时间</span><span class="mui-pull-right submitTime"></span></li>
+									<li class="mui-table-view-cell"><span class="mui-pull-left">业务类型</span><span class="mui-pull-right goodsType"></span></li>
+									<li class="mui-table-view-cell"><span class="mui-pull-left">典当天数</span><span class="mui-pull-right useMoneyDays"></span></li>
 									<li class="mui-table-view-cell">
-										第一个选项卡子项-1
+										<span class="mui-block">典当图片</span>
 									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-2
+									<li class="mui-table-view-cell pic">
+										
 									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-3
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-4
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-5
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-6
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-7
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-8
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-9
-									</li>
-									<li class="mui-table-view-cell">
-										第一个选项卡子项-10
-									</li>
-								</ul>-->
+									<li class="mui-table-view-cell"><span class="mui-pull-left">电话</span><span class="mui-pull-right tel"></span></li>
+									<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">备注：</span><span class="mui-pull-left mui-block remark"></span></li>
+								</ul>
 							</div>
 						</div>
 					</div>
 					<div id="item2mobile" class="mui-slider-item mui-control-content">
 						<div id="scroll2" class="mui-scroll-wrapper">
-							<div class="mui-scroll">
-								<!--<div class="mui-loading">
-									<div class="mui-spinner">
-									</div>
-								</div>-->
+							<div class="mui-scroll item2">
+								
 							</div>
 						</div>
 					</div>
@@ -96,37 +110,84 @@
 		<script src="js/mui.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script>
-				mui.init({
-				swipeBack: false
-			});
+//				mui.init({
+//				swipeBack: false
+//			});
+				//进行中
+				$.ajax({
+					type:"get",
+					async:true,
+					dataType:"json",
+					url:"mock/saleOnline.json",
+					success:function(res){
+						pics=res.pics;
+						saleOnline=res.saleOnline[0];
+						var  goodsType=$(".goodsType");
+						var  submitTime=$(".submitTime");
+						var  useMoneyDays=$(".useMoneyDays");
+						var  goodsName=$(".goodsName");
+						var  AmountMoney=$(".AmountMoney");
+						var  tel=$(".tel");
+						var  remark=$(".remark");
+						goodsType.html(saleOnline.goodsType);
+						submitTime.html(saleOnline.submitTime);
+						useMoneyDays.html(saleOnline.useMoneyDays);
+						goodsName.html(saleOnline.goodsName);
+						AmountMoney.html(saleOnline.AmountMoney);
+						tel.html(saleOnline.tel);
+						remark.html(saleOnline.remark);
+						var pic=$(".pic");
+						$(pics).each(function(index){
+							var img=$("<img style='width:20%'>");
+							var val=pics[index].src;
+							img.attr("src",val);
+							pic.append(img);
+						})
+					}
+				})
+			//历史申请,
+			gethistorylist()
+			function gethistorylist(){
+				$.ajax({
+				type:"get",
+				dataType:"json",
+				url:"mock/historyApply.json",
+				async:false,
+				success:function(res){
+						var historyApply=res.historyApply;
+						var item2=$(".item2");
+						var ul=$("<ul class='mui-table-view applylist'></ul>");
+						$(historyApply).each(function(index){
+							var val=historyApply[index];
+								ul.append( 
+								'<li class="mui-table-view-cell mui-li-border gotoDetail" id="'+val.id+'">'
+								+ '<span class>'+'<i class="icon iconfont icon-6">'+'</i>'+val.goodsName+'</span>'
+								+ '<span class="mui-pull-right mui-text-muted">'+val.submitTime+'</span>'
+								+ '<span class="mui-block">'+'<i class="icon iconfont icon-clock">'+'</i>'+ val.useMoneyDays+'</span>'
+								+'<span class="mui-block">'+ '<i class="icon iconfont icon-qian">'+'</i>'+ val.AmountMoney+'</span>'
+								+'</li>');
+								item2.append(ul);
+						})
+					}
+				});
+			}
 //			(function($) {
 //				$('.mui-scroll-wrapper').scroll({
 //					indicators: true //是否显示滚动条
 //				});
-//				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
-//				var item2 = document.getElementById('item2mobile');
-//				document.getElementById('slider').addEventListener('slide', function(e) {
-//					if (e.detail.slideNumber === 1) {
-//						if (item2.querySelector('.mui-loading')) {
-//							setTimeout(function() {
-//								item2.querySelector('.mui-scroll').innerHTML = html2;
-//							}, 500);
-//						}
-//					} 
-//				});
-//				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
-//				$('.mui-input-group').on('change', 'input', function() {
-//					if (this.checked) {
-//						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
-//						//force repaint
-//						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
-//					}
-//				});
 //			})(mui);
-//			
+				
 			$("#addNewRequest").click(function(){
 				window.location.href="sendReuest.html"
 			})
+			
+			var gotoDetail=$(".gotoDetail");
+			gotoDetail.on("click",function(){
+				id=$(this).attr("id");
+					window.location.href="goodsDetail.html?param="+id
+//					console.log($(this).attr("id"))
+			})
+			
 		</script>
 	</body>
 </html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在线典当详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--<link rel="stylesheet" href="css/iconfont.css" />-->
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_526177_hbenupwaf5jkmx6r.css" />
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css">
+		<style>
+			.mui-text-muted{
+				color:#9c9393;
+			}
+		</style>
+	</head>
+	<body>
+			<header class="mui-bar mui-bar-nav bg-header">
+				<h1 class="mui-title">在线典当详情</h1>
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left mui-back-white"></a>
+			</header>
+			<div class="mui-content">
+				<div class="mui-content-padded" style="overflow: hidden;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">业务类型</span><span class="mui-pull-right goodsType"></span></li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">提交时间</span><span class="mui-pull-right submitTime"></span></li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">典当天数</span><span class="mui-pull-right useMoneyDays"></span></li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">典当物品</span><span class="mui-pull-right goodsName"></span></li>
+						<li class="mui-table-view-cell">
+							<span class="mui-block mui-text-muted">典当图片</span>
+						</li>
+						<li class="mui-table-view-cell pic">
+							
+						</li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">典当金额</span><span class="mui-pull-right AmountMoney"></span></li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">电话</span><span class="mui-pull-right tel"></span></li>
+						<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">备注</span><span class="mui-pull-left mui-block remark"></span></li>
+					</ul>
+				</div>
+			</div>
+			<script src="js/mui.min.js"></script>
+			<script src="js/jquery.min.js"></script>
+			<script>
+				var url=window.location.search;
+				var loc = url.substring(url.indexOf('=')+1, url.length); //问号后面参数值
+				console.log(loc)
+				$.ajax({
+					type:"get",
+					async:true,
+					dataType:"json",
+					url:"mock/saleOnline.json",
+					success:function(res){
+						pics=res.pics;
+						saleOnline=res.saleOnline[0];
+						var  goodsType=$(".goodsType");
+						var  submitTime=$(".submitTime");
+						var  useMoneyDays=$(".useMoneyDays");
+						var  goodsName=$(".goodsName");
+						var  AmountMoney=$(".AmountMoney");
+						var  tel=$(".tel");
+						var  remark=$(".remark");
+						goodsType.html(saleOnline.goodsType);
+						submitTime.html(saleOnline.submitTime);
+						useMoneyDays.html(saleOnline.useMoneyDays);
+						goodsName.html(saleOnline.goodsName);
+						AmountMoney.html(saleOnline.AmountMoney);
+						tel.html(saleOnline.tel);
+						remark.html(saleOnline.remark);
+						var pic=$(".pic");
+						$(pics).each(function(index){
+							var img=$("<img style='width:20%'>");
+							var val=pics[index].src;
+							img.attr("src",val);
+							pic.append(img);
+						})
+					}
+				})
+			</script>
+	</body>
+</html>
