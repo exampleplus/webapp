@@ -30,9 +30,11 @@
             //遍历获取到得图片文件
             for (var i = 0; i < fileList.length; i++) {
                 var imgUrl = window.URL.createObjectURL(file.files[i]);
+                console.log(imgUrl);
                 imgArr.push(imgUrl);
                 var img = document.createElement("img");
                 img.setAttribute("src", imgArr[i]);
+                console.log(imgArr[i]);
                 var imgAdd = document.createElement("div");
                 imgAdd.setAttribute("class", "z_addImg");
                 imgAdd.appendChild(img);

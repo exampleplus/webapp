@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title></title>
+	</head>
+	<body>
+		<script>
+		  var gSenderId = "12323123"; //用于避免重复调用
+		  function getId(){ 			//获取用户ID
+		    alert("user:"+ddMethod.getUserId());
+		  }
+		
+		  function checkAuth(){			//验证是否完成认证
+		    ddMethod.checkAuth(gSenderId)
+		  }
+		
+		  function receiveAuthed(senderId,flag){		
+		    if(gSenderId == senderId){
+		      if(flag){
+		        alert("所有认证项都完成")
+		      }
+		    }
+		  }
+</script>
+<input type="button" value="获取用户id" onclick="getId()">
+<br>
+<br>
+<br>
+<input type="button" value="检查是否完成所有认证项目" onclick="checkAuth()">
+
+	</body>
+</html>

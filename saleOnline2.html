@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在线典当</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--<link rel="stylesheet" href="css/iconfont.css" />-->
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_526177_hbenupwaf5jkmx6r.css" />
+		<!--App自定义的css-->
+		<link rel="stylesheet" href="css/app.css">
+		<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			html,#slider,.mui-content{
+				width:100%;
+				height:100%;
+				
+			}
+			body{
+				/*margin-top:45px;*/
+				width:100%;
+				height:calc(100% - 45px);
+			}
+			.mui-slider-group{
+				height:calc(100% - 45px);
+			}
+			.mui-table-view-cell:after{
+				
+				left:0;
+			}
+			.mui-text-muted{
+				color:#9c9393;
+			}
+			.mui-li-border:after{
+				height:1px;
+			}
+			.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item{
+				border-top:none;
+			}
+			.icon-6,.icon-clock,.icon-qian{
+				font-size: 1em;
+				margin-right:10px;
+			}
+			.icon-qian{
+				color:red;
+			}
+			.color_red{
+				color:red
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+				<div id="scroll1" class="mui-scroll-wrapper">
+					<div class="mui-scroll item1">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell"><span class="mui-pull-left color_red goodsName"></span><span class="mui-pull-right color_red AmountMoney"></span></li>
+							<li class="mui-table-view-cell"><span class="mui-pull-left">提交时间</span><span class="mui-pull-right submitTime"></span></li>
+							<li class="mui-table-view-cell"><span class="mui-pull-left">业务类型</span><span class="mui-pull-right goodsType"></span></li>
+							<li class="mui-table-view-cell"><span class="mui-pull-left">典当天数</span><span class="mui-pull-right useMoneyDays"></span></li>
+							<li class="mui-table-view-cell"><span class="mui-pull-left">电话</span><span class="mui-pull-right tel"></span></li>
+							<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">备注：</span><span class="mui-pull-left mui-block remark"></span></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script>
+				mui.init({
+				swipeBack: false
+			});
+				//进行中
+				$.ajax({
+					type:"get",
+					async:true,
+					dataType:"json",
+					url:"mock/saleOnline.json",
+					success:function(res){
+						pics=res.pics;
+						saleOnline=res.saleOnline[0];
+						var  goodsType=$(".goodsType");
+						var  submitTime=$(".submitTime");
+						var  useMoneyDays=$(".useMoneyDays");
+						var  goodsName=$(".goodsName");
+						var  AmountMoney=$(".AmountMoney");
+						var  tel=$(".tel");
+						var  remark=$(".remark");
+						goodsType.html(saleOnline.goodsType);
+						submitTime.html(saleOnline.submitTime);
+						useMoneyDays.html(saleOnline.useMoneyDays);
+						goodsName.html(saleOnline.goodsName);
+						AmountMoney.html(saleOnline.AmountMoney);
+						tel.html(saleOnline.tel);
+						remark.html(saleOnline.remark);
+					}
+				})
+		</script>
+	</body>
+</html>

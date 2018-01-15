@@ -1,9 +1,0 @@
-{
-	"saleOnline":[
-		{ "goodsName": "当品名称", "AmountMoney":"10000元",  "submitTime": "2017-01-09 11:09:09", "goodsType":"民品", "useMoneyDays":"30", "tel":17612107190,"remark":"备注备注备注"}
-	],
-	"pics":[
-		{"src":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1003706214,1039273073&fm=200&gp=0.jpg"},
-		{"src":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1560949100,3374379863&fm=27&gp=0.jpg"}
-	]
-}
