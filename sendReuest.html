@@ -43,7 +43,23 @@
 				bottom:45%;
 				display: none;
 			}
-			
+			.mark{
+				width: 100%;
+				height:100%;
+				background: rgba(0,0,0,0.4);
+				z-index: 999;
+			}
+			.progress{
+				padding:10px 20px;
+				position: absolute;
+				top:80%;
+				left:50%;
+				transform: translateX(-50%);
+				background: rgba(0,0,0,0.8);
+				color:#fff;
+				font-size: 16px;
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
@@ -124,13 +140,17 @@
 					                <input type="file" name="attach" id="fileupload" accept="image/*"/>
 				            	</form>
 				            </div>
-				            <div class="preview" style="float: left;">
-				            		
+				            <div class="preview">
+				            	
 							</div>
 				        </div>
 				    </div
 			    </div>
-				
+			    <!--图片上传过程提示信息-->
+				<p class="progress">
+					图片上传中，请稍后......
+				</p>
+				<!--body阴影 ，图片上传成功前不能让用户继续选择-->
 				<div class="mui-row">
 					<form class="mui-input-group">
 						<div class="mui-input-row mui-checkbox mui-left">
@@ -142,9 +162,10 @@
 				<div class="mui-row">
 					<button type="button" class="mui-btn mui-btn-danger mui-btn-block" id="sendOnline">发送</button>
 				</div>
-				<p class="popover">发送请求中......</p>
+				<!--<p class="popover">发送请求中......</p>-->
 			</div>
 		</div>
+		
 		<script src="js/mui.min.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="http://malsup.github.io/jquery.form.js"></script>
@@ -188,61 +209,58 @@
 				}
 			});
 
-//			发送请求
+//			  发送请求
 //			 var gSenderId = "12323123"; //用于避免重复调用
-//			 sessionStorage.setItem('uid',userId);//保存用户id
-//			 var uid=getId();
-//		  function getId(){ 			//获取用户ID
-//				return ddMethod.getUserId();
-//			   }
-//		    function checkAuth(){			//验证是否完成认证
-//			    ddMethod.checkAuth("123456");
-//			  }
-//		    receiveAuthed();
-//		  function receiveAuthed(senderId,flag){
-//		  	console.log(flag)
-//		      if(flag){
-//		      	//ajax
-//		      	var amountMoney=$("#amountMoney").val();
-//				var useMoneyDays=$("#useMoneyDays").val();
-//				var useMoneyDate=$("#useMoneyDate").val();
-//				var goodsName=$("#goodsName").val();
-//				var contactPerson=$("#contactPerson").val();
-//				var tel=$("#tel").val();
-//				var remark=$("#remark").val();
-//				var uid=getId();
-//				var pictureNoList=$("#ImgVal").val();
+			 var uid=getId();
+		  function getId(){ 			//获取用户ID
+				return ddMethod.getUserId();
+			   }
+		    function checkAuth(){			//验证是否完成认证
+			    ddMethod.checkAuth("123456");
+			  }
+		  function receiveAuthed(senderId,flag){
+		      if(flag){
+		      	//ajax
+		      	var amountMoney=$("#amountMoney").val();
+				var useMoneyDays=$("#useMoneyDays").val();
+				var useMoneyDate=$("#useMoneyDate").val();
+				var goodsName=$("#goodsName").val();
+				var contactPerson=$("#contactPerson").val();
+				var tel=$("#tel").val();
+				var remark=$("#remark").val();
+				var uid=getId();
+				var pictureNoList=$("#ImgVal").val();
 //				alert("userID:"+uid);
-//		      		$.ajax({
-//						type:'post',
-//						asynd:true,
-//						dataType:"json",
-//						url:host+"applyImpawnInfo/saveApplyImpawnInfo",
-//						data:{
-//								goodsType:goodsType,
-//								amountMoney:amountMoney,
-//								useMoneyDays:useMoneyDays,
-//								useMoneyDate:useMoneyDate,
-//								goodsName:goodsName,
-//								contactPerson:contactPerson,
-//								tel:tel,
-//								remark:remark,
-//								uid:uid,
-//								pictureNoList:pictureNoList
-//							},
-//						success:function(res){
-//							alert(res.message);
-//							}
-//					})
-//		      		 alert("所有认证项都完成")
-//					window.location.href="saleOnline.html"
-//		     	  		
-//		     	 }
-//		  }
+		      		$.ajax({
+						type:'post',
+						asynd:true,
+						dataType:"json",
+						url:host+"applyImpawnInfo/saveApplyImpawnInfo",
+						data:{
+								goodsType:goodsType,
+								amountMoney:amountMoney,
+								useMoneyDays:useMoneyDays,
+								useMoneyDate:useMoneyDate,
+								goodsName:goodsName,
+								contactPerson:contactPerson,
+								tel:tel,
+								remark:remark,
+								uid:uid,
+								pictureNoList:pictureNoList
+							},
+						success:function(res){
+							alert(res.message);
+							}
+					})
+		      		 alert("所有认证项都完成")
+					window.location.href="saleOnline.html"
+		     	  		
+		     	 }
+		  }
 			//上传图片
 			var type=14;
 //			var uid=getId();
-			var uid=1;
+//			var uid=1;
 				$("#fileupload").change(function() {
 						var file=this.files[0];
 						console.log(file);
@@ -254,105 +272,67 @@
 									);
 								$('.preview').append($li);
 								//立即上传图片
-								//$("#form").attr("action",host+"guanjia_api/picture/upload-image?type="+type+"&uid="+uid);
-      						 	 $("#form").attr("action",host+"guanjia_api/picture/upload-image?type="+type+"&uid="+uid).submit();
+      						 $("#form").attr("action",host+"guanjia_api/picture/upload-image?type="+type+"&uid="+uid).submit();
+								$(".progress").show();
 							});
-							
 							$("#form").ajaxForm(function(res){
-										console.log(res)
-					           		 	data=res.data;
-					           		 	pictureUrl=data.pictureUrl;
-					           		 	pictureNo=data.pictureNo;
-//					           		 	var preview=$(".preview");
-//							            	var img=$("<img style='width:100px;'/>");
-//							            	img.attr("src",pictureUrl);
-//							            	preview.append(img);
-//										var $li = $(
-//											'<div class="file-item thumbnail">' +
-//											'<img src="' + pictureUrl + '" alt="" style="width:100px;height:100px;">' +
-//											'</div>'
-//										);
-//										$('.preview').append($li);
-							           var ImgVal=$("#ImgVal");
-							           if(ImgVal.val()==""){
-							           		ImgVal.val(pictureNo)
-							           }else{
-							           		var ons = ImgVal.val()+";"+pictureNo;
-							           		ImgVal.val(ons);
-							           }
-								});
+								if(res.code==0){
+										$(".progress").hide();
+								}
+								console.log(res)
+			           		 	data=res.data;
+			           		 	pictureUrl=data.pictureUrl;
+			           		 	pictureNo=data.pictureNo;
+					           var ImgVal=$("#ImgVal");
+					           if(ImgVal.val()==""){
+					           		ImgVal.val(pictureNo)
+					           }else{
+					           		var ons = ImgVal.val()+";"+pictureNo;
+					           		ImgVal.val(ons);
+					           }
+							});
 					});
-//					window.addEventListener("message", function(event) {
-//							console.log(event)
-//							var data = event.data;
-//							console.log(data);
-//								var code = data.code;
-//								if(code == 0) {
-//									$(".imgurl").val(data.url);
-//								} 
-//						}, false);
-					
-//				    $("#form").attr("action","http://huan55.u1.luyouxia.net:55289/BorrowPaper/guanjia_api/picture/upload-image?type="+type+"&uid="+uid);
-//					
-//					$("#form").ajaxForm(function(res){
-//							console.log(res)
-//		           		 	data=res.data;
-//		           		 	pictureUrl=data.pictureUrl;
-//		           		 	pictureNo=data.pictureNo;
-//		           		 	var preview=$(".preview");
-//				            	var img=$("<img style='width:100px;'/>");
-//				            	img.attr("src",pictureUrl);
-//				            	preview.append(img);
-//				           var ImgVal=$("#ImgVal");
-//				           if(ImgVal.val()==""){
-//				           		ImgVal.val(pictureNo)
-//				           }else{
-//				           		var ons = ImgVal.val()+";"+pictureNo;
-//				           		ImgVal.val(ons);
-//				           }
-//					});
-			
 			//发送请求
-//			$("#sendOnline").click(function(){
-//				var uid=getId();
-//				 if(uid != ""){
-//				 	checkAuth();
-//				 }
-//			})	
-		$("#sendOnline").click(function(){
-			var amountMoney=$("#amountMoney").val();
-			var useMoneyDays=$("#useMoneyDays").val();
-			var useMoneyDate=$("#useMoneyDate").val();
-			var goodsName=$("#goodsName").val();
-			var contactPerson=$("#contactPerson").val();
-			var tel=$("#tel").val();
-			var remark=$("#tel").val();
+			$("#sendOnline").click(function(){
+				var uid=getId();
+				 if(uid != ""){
+				 	checkAuth();
+				 }
+			})	
+//		$("#sendOnline").click(function(){
+//			var amountMoney=$("#amountMoney").val();
+//			var useMoneyDays=$("#useMoneyDays").val();
+//			var useMoneyDate=$("#useMoneyDate").val();
+//			var goodsName=$("#goodsName").val();
+//			var contactPerson=$("#contactPerson").val();
+//			var tel=$("#tel").val();
+//			var remark=$("#tel").val();
 //			var uid=getId();
-			var uid=1;
-			var pictureNoList=$("#ImgVal").val();
-			$.ajax({
-				type:'post',
-				asynd:true,
-				dataType:"json",
-				url:host+"applyImpawnInfo/saveApplyImpawnInfo",
-				data:{
-						goodsType:goodsType,
-						amountMoney:amountMoney,
-						useMoneyDays:useMoneyDays,
-						useMoneyDate:useMoneyDate,
-						goodsName:goodsName,
-						contactPerson:contactPerson,
-						tel:tel,
-						remark:remark,
-						uid:uid,
-						pictureNoList:pictureNoList
-					},
-				success:function(res){
-							alert("有失败了")
-					}
-			})
-			window.location.href="saleOnline.html"
-		})
+////			var uid=1;
+//			var pictureNoList=$("#ImgVal").val();
+//			$.ajax({
+//				type:'post',
+//				asynd:true,
+//				dataType:"json",
+//				url:host+"applyImpawnInfo/saveApplyImpawnInfo",
+//				data:{
+//						goodsType:goodsType,
+//						amountMoney:amountMoney,
+//						useMoneyDays:useMoneyDays,
+//						useMoneyDate:useMoneyDate,
+//						goodsName:goodsName,
+//						contactPerson:contactPerson,
+//						tel:tel,
+//						remark:remark,
+//						uid:uid,
+//						pictureNoList:pictureNoList
+//					},
+//				success:function(res){
+//							alert("有失败了")
+//					}
+//			})
+//			window.location.href="saleOnline.html"
+//		})
 			
 		</script>
 	</body>

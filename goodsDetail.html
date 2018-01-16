@@ -48,11 +48,11 @@
 			<script>
 				var url=window.location.search;
 				var id = url.substring(url.indexOf('=')+1, url.length); //问号后面参数值
-//				 function getId(){ 			//获取用户ID
-//			   	  return ddMethod.getUserId();
-//			   }
-//				var uid=getId();
-				var uid=1;
+				 function getId(){ 			//获取用户ID
+			   	  return ddMethod.getUserId();
+			   }
+				var uid=getId();
+//				var uid=1;
 				$.ajax({
 					type:"get",
 					async:true,
@@ -64,7 +64,7 @@
 					},
 					success:function(res){
 						
-						console.log(res)
+//						console.log(res)
 						applyImpawnInfo=res.applyImpawnInfo[0];
 						pics=applyImpawnInfo.pics;
 						console.log(pics)

@@ -80,20 +80,7 @@
 					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
 						<div id="scroll1" class="mui-scroll-wrapper">
 							<div class="mui-scroll item1">
-								<!--<ul class="mui-table-view">
-									<li class="mui-table-view-cell"><span class="mui-pull-left color_red goodsName"></span><span class="mui-pull-right color_red AmountMoney"></span></li>
-									<li class="mui-table-view-cell"><span class="mui-pull-left">提交时间</span><span class="mui-pull-right submitTime"></span></li>
-									<li class="mui-table-view-cell"><span class="mui-pull-left">业务类型</span><span class="mui-pull-right goodsType"></span></li>
-									<li class="mui-table-view-cell"><span class="mui-pull-left">典当天数</span><span class="mui-pull-right useMoneyDays"></span></li>
-									<li class="mui-table-view-cell">
-										<span class="mui-block">典当图片</span>
-									</li>
-									<li class="mui-table-view-cell pic">
-										
-									</li>
-									<li class="mui-table-view-cell"><span class="mui-pull-left">电话</span><span class="mui-pull-right tel"></span></li>
-									<li class="mui-table-view-cell"><span class="mui-pull-left mui-text-muted">备注：</span><span class="mui-pull-left mui-block remark"></span></li>
-								</ul>-->
+								
 							</div>
 						</div>
 					</div>
@@ -116,15 +103,15 @@
 				});
 			
 				var type=0;
-//			  function getId(){ //获取用户ID
-//			   	  return ddMethod.getUserId();
-//			   }
-//				var uid=getId();//用户id
-				var uid=1;
+			  function getId(){ //获取用户ID
+			   	  return ddMethod.getUserId();
+			   }
+				var uid=getId();//用户id
+//				var uid=1;
 				//进行中
 				$.ajax({
 					type:"post",
-					async:true,
+					async:false,
 					dataType:"json",
 					url:host+"applyImpawnInfo/findApplyImpawnInfo",
 					data:{
@@ -138,7 +125,7 @@
 						$(applyImpawnInfo).each(function(index){
 							var val=applyImpawnInfo[index];
 								ul.append( 
-								'<li class="mui-table-view-cell mui-li-border" id="'+val.id+'">'
+								'<li class="mui-table-view-cell mui-li-border datail" id="'+val.id+'">'
 								+ '<span class>'+'<i class="icon iconfont icon-6">'+'</i>'+val.goodsName+'</span>'
 								+ '<span class="mui-pull-right mui-text-muted">'+val.submitTime+'</span>'
 								+ '<span class="mui-block">'+'<i class="icon iconfont icon-clock">'+'</i>'+ val.useMoneyDays+'</span>'
@@ -184,7 +171,14 @@
 			$("#addNewRequest").click(function(){
 				window.location.href="sendReuest.html"
 			})
-			
+			//进行中详情
+			datail=$(".datail");
+			datail.on("click",function(){
+				id=$(this).attr("id");
+					window.location.href="goodsDetail.html?param="+id
+					console.log($(this).attr("id"))
+			})
+			//历史列表详情
 			var gotoDetail=$(".gotoDetail");
 			gotoDetail.on("click",function(){
 				id=$(this).attr("id");
